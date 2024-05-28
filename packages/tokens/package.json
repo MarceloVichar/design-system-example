@@ -15,5 +15,6 @@
   ],
   "scripts": {
     "test": "node ./__tests__/tokens.test.js"
-  }
+  },
+  "gitHead": "c8ca4143752a24cee529a52704527a230e99e851"
 }
