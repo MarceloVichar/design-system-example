@@ -1,0 +1,20 @@
+export const colors = {
+    primary: '#1F3666',
+    secondary: '#475266',
+    base100: '#FFFFFF',
+    base200: '#F4F4F4',
+    base300: '#F5FBFF',
+    base400: '#E0E0E0',
+    base500: '#C6C6C6',
+    base600: '#CCCCCC',
+    contentPrimary: '#161616',
+    contentSecondary: '#525252',
+    blueLight: '#F5FBFF',
+    blueMedium: '#D0E2FF',
+    blueDark: '#0043CE',
+    link: '#457AE5',
+    success: '#27B46E',
+    error: '#F03613',
+    warning: '#EDC02C',
+    info: '#57B7E8'
+}
