@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bx--btn--primary:enabled:not(.bx--header__action),
+.bx--btn--tertiary:hover {
+  @apply !bg-primary !text-base-100;
+}
+
+.bx--btn--tertiary {
+  @apply !border-primary !text-primary;
+}
+
+.bx--content-switcher-btn::after {
+  @apply !bg-primary !text-white;
+}
+
+.bx--content-switcher--selected span {
+  @apply !text-white;
+}
+
+p,
+span:not(.bx--tag__label) {
+  color: theme("colors.content-primary");
+}
+
+.bx--modal-footer .bx--btn {
+  padding-bottom: 1rem !important;
+  height: 2rem !important;
+}
+
+.bx--btn--primary:focus,
+.bx--btn--danger:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.bx--btn {
+  max-width: 100% !important;
+}
+
+.bx--overflow-menu--open {
+  background: #f4f4f4 !important;
+  border: none !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+.bx--overflow-menu-options__btn:focus {
+  outline: none !important;
+}
