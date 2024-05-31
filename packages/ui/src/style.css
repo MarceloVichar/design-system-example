@@ -7,6 +7,10 @@
   @apply !bg-primary !text-base-100;
 }
 
+.bx--btn--primary {
+  @apply !text-white;
+}
+
 .bx--btn--tertiary {
   @apply !border-primary !text-primary;
 }

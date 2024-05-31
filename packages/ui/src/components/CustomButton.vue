@@ -1,14 +1,14 @@
 <template>
   <div>
     <CvButton
-    class="!flex !items-center !gap-2 !button"
+    class="!flex !items-center !gap-2 !button !justify-center"
     :class="[iconPadding, contentCentered]"
-    :kind="type"
+    :kind="kind"
     :size="size"
     :disabled="disabled"
-    @click="$emit('click')"
+    @click="emit('click')"
   >
-    <p>{{ text }} teste</p>
+    <slot>{{ text }}</slot>
     <span v-if="loading" aria-label="Loading..." role="status">
       <svg class="h-4 w-4 animate-spin" viewBox="3 3 18 18">
         <path
@@ -25,52 +25,51 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import 'carbon-components/css/carbon-components.css';
 import CvButton from '@carbon/vue/src/components/CvButton';
+import {computed, onMounted, ref} from 'vue';
 
-export default {
-  name: 'CustomButton',
-  components: {
-    CvButton
-  },
-  props: {
-    icon: {
-      type: String,
-      default: ''
-    },
-    type: {
-      type: String,
-      default: 'primary'
-    },
-    text: {
-      type: String,
-      default: ''
-    },
-    size: {
-      type: String,
-      default: 'default'
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    centered: {
-      type: Boolean,
-      default: false
-    },
-    loading: {
-      type: Boolean,
-      default: false
-    }
-  },
-  computed: {
-    iconPadding () {
-      return this.icon ? '!px-4' : ''
-    },
-    contentCentered () {
-      return this.centered ? '!justify-center' : '!justify-between'
-    }
-  }
+type ButtonKinds = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger' | 'danger-ghost' | 'danger-tertiary'
+type ButtonSizes = 'default' | 'field' | 'sm' |'lg' | 'xl'
+
+interface CustomButtonProps {
+  icon?: string;
+  kind?: ButtonKinds;
+  text?: string;
+  size?: ButtonSizes;
+  disabled?: boolean;
+  centered?: boolean;
+  loading?: boolean;
 }
+
+interface CustomButtonEvents {
+  (e: 'click'): void;
+}
+
+const props = withDefaults(defineProps<CustomButtonProps>(), {
+  icon: '',
+  kind: 'primary',
+  text: 'Button',
+  size: 'default',
+  disabled: false,
+  centered: false,
+  loading: false
+});
+
+const emit = defineEmits<CustomButtonEvents>();
+
+const test = ref('primary')
+
+onMounted(() => {
+  setInterval(() => {
+    const kinds: ButtonKinds[] = ['primary', 'secondary', 'tertiary', 'ghost', 'danger', 'danger-ghost', 'danger-tertiary'];
+    const randomIndex = Math.floor(Math.random() * kinds.length);
+    test.value = kinds[randomIndex];
+  }, 1000);
+});
+
+
+const iconPadding = computed(() => props.icon ? '!px-4' : '');
+const contentCentered = computed(() => props.centered ? '!justify-center' : '!justify-between');
 </script>

@@ -20,7 +20,7 @@
       v-model="yourName"
       placeholder="your name"
     />
-    <CustomButton :text="`Hello ${yourName}`" @click="onClick"></CustomButton>
+    <CustomButton :text="`Hello ${yourName}`" @click="onClick" type="danger"></CustomButton>
     <cv-modal :visible="visible" @modal-hidden="modalClosed">
       <template #title>Welcome to @carbon/vue {{yourName}}</template>
       <template #content>
